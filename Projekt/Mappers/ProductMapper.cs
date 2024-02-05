@@ -1,7 +1,7 @@
 ﻿using Data.Entities;
-using Projekt.Models;
+using Projekt.Models.Products;
 
-namespace Projekt.Mappers
+namespace Projekt.Mappers.Products
 {
     public class ProductMapper
     {

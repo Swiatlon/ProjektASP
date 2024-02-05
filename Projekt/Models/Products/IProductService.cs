@@ -1,4 +1,4 @@
-﻿namespace Projekt.Models
+﻿namespace Projekt.Models.Products
 {
     public interface IProductService
     {

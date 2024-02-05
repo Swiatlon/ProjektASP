@@ -1,8 +1,8 @@
-﻿@model List<Projekt.Models.ProductModel>
+﻿@model List<Projekt.Models.Products.ProductModel>;
 
-<h2>Product List</h2>
+<h2>Producer List</h2>
 <p>
-    <a asp-action="Create">Add a new product</a>
+    <a asp-action="Create">Add a new producer</a>
 </p>
 
 @if (Model.Count > 0)
@@ -39,5 +39,5 @@
 }
 else
 {
-    <p>No products to display.</p>
+    <p>No producer to display.</p>
 }

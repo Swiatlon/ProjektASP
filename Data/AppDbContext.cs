@@ -6,6 +6,7 @@ namespace Data
         public class AppDbContext : DbContext
     {
         public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<ProducerEntity> Producers { get; set; }
         private string DbPath { get; set; }
         public AppDbContext()
         {
@@ -39,6 +40,21 @@ namespace Data
                     Description = "Product 2 description",
                 }
             );
+
+            modelBuilder.Entity<ProducerEntity>().HasData(
+               new ProducerEntity()
+               {
+                   Id = 1,
+                   Name = "Przemo",
+                   Description = "Robi muze",
+               },
+               new ProducerEntity()
+               {
+                   Id = 2,
+                   Name = "Kacpi",
+                   Description = "Robi halas",
+               }
+           );
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Projekt.Models;
+using Projekt.Models.Products;
 
 namespace Projekt.Controllers
 {
-        public class ProductController : Controller
+    public class ProductController : Controller
         {
             private readonly IProductService _productService;
 

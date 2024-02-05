@@ -1,4 +1,5 @@
-using Projekt.Models;
+using Projekt.Models.Products;
+using Projekt.Models.Producer;
 
 namespace Projekt
 {
@@ -9,6 +10,7 @@ namespace Projekt
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<IProducerService, ProducerService>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

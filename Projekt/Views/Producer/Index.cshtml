@@ -1,0 +1,38 @@
+﻿@model List<Projekt.Models.Producer.ProducerModel>
+
+<h2>Producer List</h2>
+<p>
+    <a asp-action="Create">Add a new producer</a>
+</p>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producer in Model)
+            {
+                <tr>
+                    <td>@producer</td>
+                    <td>@producer.Description</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@producer.Id">Details</a> |
+                        <a asp-action="Edit" asp-route-id="@producer.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@producer.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No producer to display.</p>
+}

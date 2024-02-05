@@ -1,8 +1,8 @@
 ﻿using Data.Entities;
 using Data;
-using Projekt.Mappers;
+using Projekt.Mappers.Products;
 
-namespace Projekt.Models
+namespace Projekt.Models.Products
 {
     public class ProductService : IProductService
     {
