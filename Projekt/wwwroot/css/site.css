@@ -1,0 +1,64 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+header {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    color: #343a40;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #343a40;
+    font-weight: bold;
+}
+
+/* Style the main content */
+.container {
+    padding-top: 20px;
+}
+
+/* Style the footer */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.header-text {
+    color: #007bff; /* Blue */
+}
+
+.list-item {
+    color: #28a745; /* Green */
+}
+
+.active {
+    color: #007bff !important;
+}

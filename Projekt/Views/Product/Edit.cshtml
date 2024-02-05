@@ -1,0 +1,39 @@
+﻿@model Projekt.Models.ProductModel
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Producer"></label>
+        <input asp-for="Producer" class="form-control" />
+        <span asp-validation-for="Producer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductionDate"></label>
+        <input asp-for="ProductionDate" type="date" class="form-control" />
+        <span asp-validation-for="ProductionDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
