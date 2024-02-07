@@ -1,26 +1,17 @@
 ﻿@model Projekt.Models.Producer.ProducerModel;
 
-<h2>Producer Details</h2>
+<h2 class="margin-2">Szczegóły Producenta</h2>
 
 <div>
-    <h4>Producer</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+    <dl class="row margin-2">
+        <dt class="col-sm-2" style="font-weight: bold;">Nazwa:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+        <dt class="col-sm-2" style="font-weight: bold;">Opis:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
     </dl>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
+    <div class="margin-2">
+        <a asp-action="Index" class="btn btn-secondary">Powrót do Listy</a>
     </div>
 </div>

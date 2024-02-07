@@ -1,6 +1,7 @@
 ﻿using Data.Entities;
 using Data;
 using Projekt.Mappers.Producers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projekt.Models.Producer
 {
@@ -45,6 +46,12 @@ namespace Projekt.Models.Producer
                 _context.Producers.Remove(find);
                 _context.SaveChanges();
             }
+        }
+
+        public string GetProducerNameById(int producerId)
+        {
+            var producer = _context.Producers.FirstOrDefault(p => p.Id == producerId);
+            return producer != null ? producer.Name : "Unknown Producer";
         }
     }
 }

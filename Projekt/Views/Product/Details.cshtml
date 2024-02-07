@@ -1,48 +1,47 @@
-﻿@model Projekt.Models.Products.ProductModel;
+﻿@model Projekt.Models.Products.ProductModel
 
-<h2>Product Details</h2>
+<h2>Szczegóły produktu</h2>
 
-<div>
-    <h4>Product</h4>
+<div class="product-details">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            Nazwa
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
+            Cena
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Price) zł
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Producer)
+            Producent
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Producer)
+            @ViewBag.ProducerName
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductionDate)
+            Data produkcji
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ProductionDate)
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            Opis
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
+    <div class="back-link">
+        <a asp-action="Index" class="btn btn-primary">Powrót do listy</a>
     </div>
 </div>

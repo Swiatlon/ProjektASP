@@ -16,5 +16,7 @@ namespace Data.Entities
         [Required]
         [MaxLength(255)]
         public string Description { get; set; }
+        public ICollection<ProductEntity> Products { get; set; }
+    
     }
 }

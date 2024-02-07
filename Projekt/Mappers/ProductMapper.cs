@@ -12,7 +12,7 @@ namespace Projekt.Mappers.Products
                 Id = entity.Id,
                 Name = entity.Name,
                 Price = entity.Price,
-                Producer = entity.Producer,
+                ProducerId = entity.ProducerId,
                 ProductionDate = entity.ProductionDate,
                 Description = entity.Description,
             };
@@ -25,7 +25,7 @@ namespace Projekt.Mappers.Products
                 Id = model.Id,
                 Name = model.Name,
                 Price = model.Price,
-                Producer = model.Producer,
+                ProducerId = model.ProducerId,
                 ProductionDate = model.ProductionDate,
                 Description = model.Description,
             };

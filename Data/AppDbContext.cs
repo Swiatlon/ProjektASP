@@ -12,49 +12,48 @@ namespace Data
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "products.db");
+            DbPath = System.IO.Path.Join(path, "projekt.db");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options) =>
         options.UseSqlite($"Data Source={DbPath}");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ProductEntity>()
+                .HasOne(p => p.Producer)
+                .WithMany(p => p.Products)
+                .HasForeignKey(p => p.ProducerId);
 
-            modelBuilder.Entity<ProductEntity>().HasData(
-                new ProductEntity()
-                {
-                    Id = 1,
-                    Name = "Product 1",
-                    Price = 10.99m,
-                    Producer = "Producer 1",
-                    ProductionDate = new DateTime(2020, 10, 10),
-                    Description = "Product 1 description",
-                },
-                new ProductEntity()
-                {
-                    Id = 2,
-                    Name = "Product 2",
-                    Price = 20.99m,
-                    Producer = "Producer 2",
-                    ProductionDate = new DateTime(2023, 10, 10),
-                    Description = "Product 2 description",
-                }
-            );
+            var random = new Random();
 
-            modelBuilder.Entity<ProducerEntity>().HasData(
-               new ProducerEntity()
-               {
-                   Id = 1,
-                   Name = "Przemo",
-                   Description = "Robi muze",
-               },
-               new ProducerEntity()
-               {
-                   Id = 2,
-                   Name = "Kacpi",
-                   Description = "Robi halas",
-               }
-           );
+            var producers = new List<ProducerEntity>();
+            for (int i = 1; i <= 5; i++)
+            {
+                producers.Add(new ProducerEntity
+                {
+                    Id = i,
+                    Name = $"Producer{i}",
+                    Description = $"Description for Producer{i}"
+                });
+            }
+
+            var products = new List<ProductEntity>();
+            for (int i = 1; i <= 10; i++)
+            {
+                var producerId = random.Next(1, 6);
+                products.Add(new ProductEntity
+                {
+                    Id = i,
+                    Name = $"Product{i}",
+                    Price = (decimal)random.NextDouble() * 100,
+                    ProducerId = producerId,
+                    ProductionDate = DateTime.Now.AddDays(-random.Next(1, 365)),
+                    Description = $"Description for Product{i}"
+                });
+            }
+
+            modelBuilder.Entity<ProducerEntity>().HasData(producers);
+            modelBuilder.Entity<ProductEntity>().HasData(products);
         }
     }
 }

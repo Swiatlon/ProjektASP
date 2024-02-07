@@ -62,3 +62,35 @@ body {
 .active {
     color: #007bff !important;
 }
+
+
+/* CSS styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.even-row {
+    background-color: #f8f9fa; /* Light gray */
+}
+
+.odd-row {
+    background-color: #e9ecef; /* Light blue */
+}
+
+.margin-1{
+    margin-top: 24px;
+}
+
+.margin-2{
+    margin-top:18px;
+}

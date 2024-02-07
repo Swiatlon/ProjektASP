@@ -1,10 +1,8 @@
 ﻿@model Projekt.Models.Products.ProductModel
 
-<h2 class="margin-2">Edytuj produkt</h2>
+<h2 class="margin-2">Dodaj produkt</h2>
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
-
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
     <div class="form-group margin-2">
         <label asp-for="Name">Nazwa</label>
         <input asp-for="Name" class="form-control" />
@@ -12,14 +10,23 @@
     </div>
 
     <div class="form-group margin-2">
-        <label asp-for="Price">Cena</label>
-        <input asp-for="Price" class="form-control" />
+      <label asp-for="Price">Cena</label>
+        <div class="input-group">
+            <input asp-for="Price" class="form-control" />
+            <div class="input-group-append">
+                <span class="input-group-text">zł</span>
+            </div>
+        </div>
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
     <div class="form-group margin-2">
-        <label>Producent</label>
-        <select asp-for="ProducerId" asp-items="@(new SelectList(ViewBag.Producers, "Id", "Name"))" class="form-control">
+        <label asp-for="ProducerId">Producent</label>
+        <select asp-for="ProducerId" class="form-control">
+            @foreach (var producer in ViewBag.Producers)
+            {
+                    <option value="@producer.Id">@producer.Name</option>
+            }
         </select>
         <span asp-validation-for="ProducerId" class="text-danger"></span>
     </div>
@@ -36,5 +43,5 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary margin-2">Zapisz zmiany</button> <!-- Translate button text to Polish -->
+    <button type="submit" class="btn btn-primary margin-2">Dodaj produkt</button>
 </form>

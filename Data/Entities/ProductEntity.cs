@@ -16,9 +16,9 @@ namespace Data.Entities
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string Producer { get; set; }
+        [ForeignKey("Producer")]
+        public int ProducerId { get; set; }
+        public ProducerEntity Producer { get; set; }
 
         [Required]
         public DateTime ProductionDate { get; set; }

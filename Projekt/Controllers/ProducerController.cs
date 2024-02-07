@@ -28,7 +28,7 @@ namespace Projekt.Controllers
 
             if (product == null)
             {
-                return NotFound(); // Producer with the specified id was not found
+                return NotFound();
             }
 
             return View(product);
@@ -39,7 +39,7 @@ namespace Projekt.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("Form");
+            return View("Create");
         }
 
         // POST: /Producer/Create
@@ -53,7 +53,7 @@ namespace Projekt.Controllers
             }
             else
             {
-                return View("Form", model);
+                return View("Create", model);
             }
         }
 
@@ -94,7 +94,7 @@ namespace Projekt.Controllers
 
             if (product == null)
             {
-                return NotFound(); // Product with the specified id was not found
+                return NotFound();
             }
 
             return View(product);
@@ -108,7 +108,7 @@ namespace Projekt.Controllers
 
             if (product == null)
             {
-                return NotFound(); // Product with the specified id was not found
+                return NotFound();
             }
 
             _producerService.DeleteProducer(id);

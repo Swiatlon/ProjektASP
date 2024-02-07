@@ -1,20 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Projekt.Models.Producer;
 using Projekt.Models.Products;
 
 namespace Projekt.Controllers
 {
     public class ProductController : Controller
         {
-            private readonly IProductService _productService;
+        private readonly IProductService _productService;
+        private readonly IProducerService _producerService;
 
-            public ProductController(IProductService productService)
-            {
-                _productService = productService;
-            }
+        public ProductController(IProductService productService, IProducerService producerService) 
+        {
+            _productService = productService;
+            _producerService = producerService; 
+        }
 
-            // MAIN VIEW
-            // GET: /Product
-            public IActionResult Index()
+        // MAIN VIEW
+        // GET: /Product
+        public IActionResult Index()
             {
                 var productList = _productService.GetAllProducts();
                 return View(productList);
@@ -24,22 +27,26 @@ namespace Projekt.Controllers
             // GET: /Product/Details/1
             public IActionResult Details(int id)
             {
-                var product = _productService.GetProductById(id);
-
-                if (product == null)
-                {
-                    return NotFound(); // Product with the specified id was not found
-                }
-
-                return View(product);
+            var product = _productService.GetProductById(id);
+            if (product == null)
+            {
+                return NotFound(); 
             }
+
+            var producerName = _producerService.GetProducerNameById(product.ProducerId);
+            ViewBag.ProducerName = producerName;
+
+            return View(product);
+        }
 
             // ADDING
             // GET: /Product/Create
             [HttpGet]
             public IActionResult Create()
             {
-                return View("Form");
+            var producers = _producerService.GetAllProducers();
+            ViewBag.Producers = producers;
+            return View("Create");
             }
 
             // POST: /Product/Create
@@ -53,7 +60,9 @@ namespace Projekt.Controllers
                 }
                 else
                 {
-                    return View("Form", model);
+                var producers = _producerService.GetAllProducers();
+                ViewBag.Producers = producers;
+                return View("Create", model);
                 }
             }
 
@@ -62,6 +71,8 @@ namespace Projekt.Controllers
             public IActionResult Edit(int id)
             {
                 var product = _productService.GetProductById(id);
+                var producers = _producerService.GetAllProducers();
+                ViewBag.Producers = producers;
 
                 if (product == null)
                 {
@@ -69,13 +80,17 @@ namespace Projekt.Controllers
                 }
 
                 return View("Edit", product);
-            }
 
-            [HttpPost]
+        }
+
+        [HttpPost]
             public IActionResult Edit(ProductModel model)
             {
                 if (ModelState.IsValid)
                 {
+                    var producerName = _producerService.GetProducerNameById(model.ProducerId);
+                    ViewBag.ProducerName = producerName;
+
                     _productService.UpdateProduct(model);
                     return RedirectToAction("Index");
                 }
@@ -94,7 +109,7 @@ namespace Projekt.Controllers
 
                 if (product == null)
                 {
-                    return NotFound(); // Product with the specified id was not found
+                    return NotFound();
                 }
 
                 return View(product);
@@ -108,7 +123,7 @@ namespace Projekt.Controllers
 
                 if (product == null)
                 {
-                    return NotFound(); // Product with the specified id was not found
+                    return NotFound();
                 }
 
                 _productService.DeleteProduct(id);

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace Projekt.Models.Producer
@@ -10,12 +8,11 @@ namespace Projekt.Models.Producer
         [HiddenInput]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Name is required.")]
+        [Required(ErrorMessage = "Nazwa jest wymagana.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Description is required.")]
-        [StringLength(1000, MinimumLength = 10, ErrorMessage = "Description must be between 10 and 1000 characters.")]
+        [Required(ErrorMessage = "Opis jest wymagany.")]
+        [StringLength(1000, MinimumLength = 10, ErrorMessage = "Opis musi zawierać od 10 do 1000 znaków.")]
         public string Description { get; set; }
-
     }
 }

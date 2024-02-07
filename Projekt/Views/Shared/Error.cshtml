@@ -1,25 +1,35 @@
-﻿@model ErrorViewModel
-@{
-    ViewData["Title"] = "Error";
+﻿@{
+    Layout = null;
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
-
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
-    It can result in displaying sensitive information from exceptions to end users.
-    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
-    and restarting the app.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .error-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Oops!</h4>
+            <p>Something went wrong.</p>
+            <hr>
+            <p class="mb-0">Please try again later or contact support.</p>
+        </div>
+        <a class="btn btn-primary" href="/">Back to Home</a>
+    </div>
+</body>
+</html>
