@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240207154904_SecondRelation")]
+    partial class SecondRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.26");
@@ -148,7 +150,8 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
+                    b.HasIndex("AddressId")
+                        .IsUnique();
 
                     b.ToTable("Producers");
 
@@ -262,98 +265,98 @@ namespace Data.Migrations
                             Id = 1,
                             Description = "Description for Product1",
                             Name = "Product1",
-                            Price = 8.8234934754912700m,
-                            ProducerId = 1,
-                            ProductionDate = new DateTime(2024, 1, 9, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6025)
+                            Price = 0.41045240184945900m,
+                            ProducerId = 3,
+                            ProductionDate = new DateTime(2023, 2, 9, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1483)
                         },
                         new
                         {
                             Id = 2,
                             Description = "Description for Product2",
                             Name = "Product2",
-                            Price = 43.576858096380400m,
-                            ProducerId = 1,
-                            ProductionDate = new DateTime(2023, 2, 8, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6057)
+                            Price = 18.727277044399300m,
+                            ProducerId = 3,
+                            ProductionDate = new DateTime(2023, 6, 27, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1513)
                         },
                         new
                         {
                             Id = 3,
                             Description = "Description for Product3",
                             Name = "Product3",
-                            Price = 99.541973512377900m,
-                            ProducerId = 5,
-                            ProductionDate = new DateTime(2023, 4, 6, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6060)
+                            Price = 88.617618476508200m,
+                            ProducerId = 1,
+                            ProductionDate = new DateTime(2024, 1, 23, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1517)
                         },
                         new
                         {
                             Id = 4,
                             Description = "Description for Product4",
                             Name = "Product4",
-                            Price = 94.317146257386400m,
+                            Price = 1.7196206886152900m,
                             ProducerId = 4,
-                            ProductionDate = new DateTime(2023, 11, 17, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6062)
+                            ProductionDate = new DateTime(2023, 9, 26, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1519)
                         },
                         new
                         {
                             Id = 5,
                             Description = "Description for Product5",
                             Name = "Product5",
-                            Price = 96.72427087562600m,
-                            ProducerId = 1,
-                            ProductionDate = new DateTime(2023, 8, 16, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6065)
+                            Price = 19.515694418668900m,
+                            ProducerId = 3,
+                            ProductionDate = new DateTime(2023, 10, 17, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1521)
                         },
                         new
                         {
                             Id = 6,
                             Description = "Description for Product6",
                             Name = "Product6",
-                            Price = 31.103013308530300m,
-                            ProducerId = 2,
-                            ProductionDate = new DateTime(2023, 9, 26, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6067)
+                            Price = 40.298028813647900m,
+                            ProducerId = 4,
+                            ProductionDate = new DateTime(2023, 7, 19, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1547)
                         },
                         new
                         {
                             Id = 7,
                             Description = "Description for Product7",
                             Name = "Product7",
-                            Price = 33.739954987855500m,
-                            ProducerId = 2,
-                            ProductionDate = new DateTime(2023, 8, 22, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6070)
+                            Price = 17.409180896913200m,
+                            ProducerId = 5,
+                            ProductionDate = new DateTime(2023, 3, 25, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1550)
                         },
                         new
                         {
                             Id = 8,
                             Description = "Description for Product8",
                             Name = "Product8",
-                            Price = 94.99437261577600m,
-                            ProducerId = 2,
-                            ProductionDate = new DateTime(2024, 1, 14, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6072)
+                            Price = 28.404295002296300m,
+                            ProducerId = 5,
+                            ProductionDate = new DateTime(2023, 4, 25, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1553)
                         },
                         new
                         {
                             Id = 9,
                             Description = "Description for Product9",
                             Name = "Product9",
-                            Price = 79.335578509786600m,
-                            ProducerId = 3,
-                            ProductionDate = new DateTime(2023, 12, 11, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6074)
+                            Price = 42.734831688275300m,
+                            ProducerId = 4,
+                            ProductionDate = new DateTime(2023, 9, 16, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1555)
                         },
                         new
                         {
                             Id = 10,
                             Description = "Description for Product10",
                             Name = "Product10",
-                            Price = 93.201892198585300m,
-                            ProducerId = 4,
-                            ProductionDate = new DateTime(2023, 12, 10, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6078)
+                            Price = 46.779424198720600m,
+                            ProducerId = 2,
+                            ProductionDate = new DateTime(2023, 6, 24, 16, 49, 4, 698, DateTimeKind.Local).AddTicks(1558)
                         });
                 });
 
             modelBuilder.Entity("Data.Entities.ProducerEntity", b =>
                 {
                     b.HasOne("Data.Entities.AddressEntity", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
+                        .WithOne()
+                        .HasForeignKey("Data.Entities.ProducerEntity", "AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

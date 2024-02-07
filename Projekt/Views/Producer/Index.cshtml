@@ -14,6 +14,7 @@
                     <th>ID</th>
                     <th>Nazwa</th>
                     <th>Opis</th>
+                    <th>Adres</th>
                     <th>Akcje</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                         <td>@producer.Id</td>
                         <td>@producer.Name</td>
                         <td>@producer.Description</td>
+                        <td><a asp-action="AddressDetails" asp-route-id="@producer.AddressId">@producer.AddressId</a></td>
                         <td>
                             <a asp-action="Details" asp-route-id="@producer.Id" class="btn btn-primary">Szczegóły</a>
                             <a asp-action="Edit" asp-route-id="@producer.Id" class="btn btn-secondary">Edytuj</a>

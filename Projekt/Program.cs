@@ -1,5 +1,6 @@
 using Projekt.Models.Products;
 using Projekt.Models.Producer;
+using Projekt.Models.Addresses;
 
 namespace Projekt
 {
@@ -11,6 +12,7 @@ namespace Projekt
             builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddTransient<IProductService, ProductService>();
             builder.Services.AddTransient<IProducerService, ProducerService>();
+            builder.Services.AddTransient<IAddressService, AddressService>();
 
             builder.Services.AddControllersWithViews();
 

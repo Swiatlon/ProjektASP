@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Projekt.Models.Addresses;
 using Projekt.Models.Producer;
 
 namespace Projekt.Controllers
@@ -6,10 +7,12 @@ namespace Projekt.Controllers
     public class ProducerController : Controller
     {
         private readonly IProducerService _producerService;
+        private readonly IAddressService _addressService;
 
-        public ProducerController(IProducerService producerService)
+        public ProducerController(IProducerService producerService, IAddressService addressService)
         {
             _producerService = producerService;
+            _addressService = addressService;
         }
 
         // MAIN VIEW
@@ -24,14 +27,16 @@ namespace Projekt.Controllers
         // GET: /Producer/Details/1
         public IActionResult Details(int id)
         {
-            var product = _producerService.GetProducerById(id);
+            var producer = _producerService.GetProducerById(id);
+            var address = _addressService.GetAddressById(producer.AddressId);
+            ViewBag.Address = address;
 
-            if (product == null)
+            if (producer == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(producer);
         }
 
         // ADDING
@@ -39,6 +44,8 @@ namespace Projekt.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            var addresses = _addressService.GetAllAddresses();
+            ViewBag.Addresses = addresses;
             return View("Create");
         }
 
@@ -53,6 +60,8 @@ namespace Projekt.Controllers
             }
             else
             {
+                var addresses = _addressService.GetAllAddresses();
+                ViewBag.Addresses = addresses;
                 return View("Create", model);
             }
         }
@@ -61,7 +70,10 @@ namespace Projekt.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            var addresses = _addressService.GetAllAddresses();
             var producer = _producerService.GetProducerById(id);
+
+            ViewBag.Addresses = addresses;
 
             if (producer == null)
             {
@@ -114,6 +126,19 @@ namespace Projekt.Controllers
             _producerService.DeleteProducer(id);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult AddressDetails (int id)
+        {
+            var address = _addressService.GetAddressById(id);
+
+            if (address == null)
+            {
+                return NotFound();
+            }
+
+            return View(address);
         }
     }
 }

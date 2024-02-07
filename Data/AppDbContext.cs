@@ -7,6 +7,7 @@ namespace Data
     {
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<ProducerEntity> Producers { get; set; }
+        public DbSet<AddressEntity> Addresses { get; set; }
         private string DbPath { get; set; }
         public AppDbContext()
         {
@@ -24,20 +25,28 @@ namespace Data
                 .WithMany(p => p.Products)
                 .HasForeignKey(p => p.ProducerId);
 
-            var random = new Random();
+            modelBuilder.Entity<ProducerEntity>()
+               .HasOne(p => p.Address)
+               .WithMany()
+               .HasForeignKey(p => p.AddressId);
 
+            var random = new Random();
             var producers = new List<ProducerEntity>();
-            for (int i = 1; i <= 5; i++)
+
+            for (int i = 1; i <= 10; i++)
             {
                 producers.Add(new ProducerEntity
                 {
                     Id = i,
                     Name = $"Producer{i}",
-                    Description = $"Description for Producer{i}"
+                    Description = $"Description for Producer{i}",
+                    AddressId = i
                 });
             }
 
             var products = new List<ProductEntity>();
+            var addresses = new List<AddressEntity>();
+
             for (int i = 1; i <= 10; i++)
             {
                 var producerId = random.Next(1, 6);
@@ -52,6 +61,19 @@ namespace Data
                 });
             }
 
+            for (int i = 1; i <= 10; i++)
+            {
+                addresses.Add(new AddressEntity
+                {
+                    Id = i,
+                    City = $"City{i}",
+                    Street = $"Street{i}",
+                    PostalCode = $"{i}00-000",
+                    Region = $"Region{i}"
+                });
+            }
+
+            modelBuilder.Entity<AddressEntity>().HasData(addresses);
             modelBuilder.Entity<ProducerEntity>().HasData(producers);
             modelBuilder.Entity<ProductEntity>().HasData(products);
         }

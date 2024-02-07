@@ -12,6 +12,7 @@ namespace Projekt.Mappers.Producers
                 Id = entity.Id,
                 Name = entity.Name,
                 Description = entity.Description,
+                AddressId = entity.AddressId,
             };
         }
 
@@ -22,6 +23,7 @@ namespace Projekt.Mappers.Producers
                 Id = model.Id,
                 Name = model.Name,
                 Description = model.Description,
+                AddressId = model.AddressId,
             };
         }
     }

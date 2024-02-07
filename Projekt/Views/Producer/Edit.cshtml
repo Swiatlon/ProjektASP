@@ -17,5 +17,16 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
+    <div class="form-group margin-2">
+        <label for="AddressId" style="font-weight: bold;">Adres:</label>
+        <select asp-for="AddressId" class="form-control">
+            @foreach (var address in ViewBag.Addresses)
+            {
+                        <option value="@address.Id">@address.City, @address.Street, @address.PostalCode, @address.Region</option>
+            }
+        </select>
+        <span asp-validation-for="AddressId" class="text-danger"></span>
+    </div>
+
     <button type="submit" class="btn btn-primary margin-2">Zapisz Zmiany</button>
 </form>

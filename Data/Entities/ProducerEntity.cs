@@ -16,7 +16,12 @@ namespace Data.Entities
         [Required]
         [MaxLength(255)]
         public string Description { get; set; }
+
+        [ForeignKey("Address")]
+        public int AddressId { get; set; }
+        public AddressEntity Address { get; set; }
+
         public ICollection<ProductEntity> Products { get; set; }
-    
+
     }
 }

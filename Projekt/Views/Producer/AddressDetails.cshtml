@@ -1,0 +1,21 @@
+﻿@model Projekt.Models.Addresses.AddressModel
+
+<h2 class="margin-2">Lokalizacja</h2>
+
+<div>
+    <hr />
+    <dl class="row margin-2">
+        <dt class="col-sm-2" style="font-weight: bold;">Miasto:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.City)</dd>
+        <dt class="col-sm-2" style="font-weight: bold;">Ulica:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Street)</dd>
+        <dt class="col-sm-2" style="font-weight: bold;">Kod pocztowy:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.PostalCode)</dd>
+        <dt class="col-sm-2" style="font-weight: bold;">Region:</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Region)</dd>
+    </dl>
+
+    <div class="margin-2">
+        <a asp-action="Index" class="btn btn-secondary">Powrót do Listy</a>
+    </div>
+</div>

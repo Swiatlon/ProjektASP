@@ -20,13 +20,13 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark @(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark @(ViewContext.RouteData.Values["Controller"].ToString().Contains("Home") ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark @(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Product" ? "active" : "")" asp-area="" asp-controller="Product" asp-action="Index">Produkty</a>
-                    </li
-                     <li class="nav-item">
-                        <a class="nav-link text-dark @(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Producer" ? "active" : "")" asp-area="" asp-controller="Producer" asp-action="Index">Producenci</a>
+                        <a class="nav-link text-dark @(ViewContext.RouteData.Values["Controller"].ToString().Contains("Product") ? "active" : "")" asp-area="" asp-controller="Product" asp-action="Index">Produkty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark @(ViewContext.RouteData.Values["Controller"].ToString().Contains("Producer") ? "active" : "")" asp-area="" asp-controller="Producer" asp-action="Index">Producenci</a>
                     </li>
                 </ul>
             </div>
