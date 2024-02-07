@@ -1,9 +1,11 @@
 ﻿using Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-        public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<ProducerEntity> Producers { get; set; }
@@ -13,13 +15,75 @@ namespace Data
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "projekt.db");
+            DbPath = System.IO.Path.Join(path, "messi.db");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options) =>
         options.UseSqlite($"Data Source={DbPath}");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            string ADMIN_ID = Guid.NewGuid().ToString();
+            string USER_ID = Guid.NewGuid().ToString();
+
+            string ADMIN_ROLE_ID = Guid.NewGuid().ToString();
+            string USER_ROLE_ID = Guid.NewGuid().ToString();
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "admin",
+                NormalizedName = "admin",
+                Id = ADMIN_ROLE_ID,
+                ConcurrencyStamp = ADMIN_ROLE_ID
+            });
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "user",
+                NormalizedName = "user",
+                Id = USER_ROLE_ID,
+                ConcurrencyStamp = USER_ROLE_ID
+            });
+
+            var admin = new IdentityUser
+            {
+                Id = ADMIN_ID,
+                Email = "admin@wsei.edu.pl",
+                EmailConfirmed = true,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                NormalizedEmail = "ADMIN@WSEI.EDU.PL"
+            };
+
+            var user = new IdentityUser
+            {
+                Id = USER_ID,
+                Email = "user@wsei.edu.pl",
+                EmailConfirmed = true,
+                UserName = "user",
+                NormalizedUserName = "user",
+                NormalizedEmail = "USER@WSEI.EDU.PL"
+            };
+
+            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
+            admin.PasswordHash = ph.HashPassword(admin, "ADMIN123!");
+            user.PasswordHash = ph.HashPassword(user, "USER123!");
+
+            modelBuilder.Entity<IdentityUser>().HasData(admin);
+            modelBuilder.Entity<IdentityUser>().HasData(user);
+            modelBuilder.Entity<IdentityUserRole<string>>()
+            .HasData(new IdentityUserRole<string>
+            {
+                RoleId = ADMIN_ROLE_ID,
+                UserId = ADMIN_ID
+            }, new IdentityUserRole<string>
+            {
+                RoleId = USER_ROLE_ID,
+                UserId = USER_ID
+            }
+            );
+
             modelBuilder.Entity<ProductEntity>()
                 .HasOne(p => p.Producer)
                 .WithMany(p => p.Products)

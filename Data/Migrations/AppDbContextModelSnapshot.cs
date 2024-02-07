@@ -262,91 +262,345 @@ namespace Data.Migrations
                             Id = 1,
                             Description = "Description for Product1",
                             Name = "Product1",
-                            Price = 8.8234934754912700m,
-                            ProducerId = 1,
-                            ProductionDate = new DateTime(2024, 1, 9, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6025)
+                            Price = 68.407324222651200m,
+                            ProducerId = 2,
+                            ProductionDate = new DateTime(2023, 11, 3, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(861)
                         },
                         new
                         {
                             Id = 2,
                             Description = "Description for Product2",
                             Name = "Product2",
-                            Price = 43.576858096380400m,
+                            Price = 42.624632834533300m,
                             ProducerId = 1,
-                            ProductionDate = new DateTime(2023, 2, 8, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6057)
+                            ProductionDate = new DateTime(2023, 7, 24, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(897)
                         },
                         new
                         {
                             Id = 3,
                             Description = "Description for Product3",
                             Name = "Product3",
-                            Price = 99.541973512377900m,
-                            ProducerId = 5,
-                            ProductionDate = new DateTime(2023, 4, 6, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6060)
+                            Price = 58.445745718876700m,
+                            ProducerId = 2,
+                            ProductionDate = new DateTime(2023, 12, 4, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(900)
                         },
                         new
                         {
                             Id = 4,
                             Description = "Description for Product4",
                             Name = "Product4",
-                            Price = 94.317146257386400m,
-                            ProducerId = 4,
-                            ProductionDate = new DateTime(2023, 11, 17, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6062)
+                            Price = 57.680881018378700m,
+                            ProducerId = 2,
+                            ProductionDate = new DateTime(2023, 10, 13, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(902)
                         },
                         new
                         {
                             Id = 5,
                             Description = "Description for Product5",
                             Name = "Product5",
-                            Price = 96.72427087562600m,
+                            Price = 19.585271908281800m,
                             ProducerId = 1,
-                            ProductionDate = new DateTime(2023, 8, 16, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6065)
+                            ProductionDate = new DateTime(2023, 9, 18, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(905)
                         },
                         new
                         {
                             Id = 6,
                             Description = "Description for Product6",
                             Name = "Product6",
-                            Price = 31.103013308530300m,
-                            ProducerId = 2,
-                            ProductionDate = new DateTime(2023, 9, 26, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6067)
+                            Price = 50.761556261678300m,
+                            ProducerId = 5,
+                            ProductionDate = new DateTime(2023, 5, 13, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(908)
                         },
                         new
                         {
                             Id = 7,
                             Description = "Description for Product7",
                             Name = "Product7",
-                            Price = 33.739954987855500m,
-                            ProducerId = 2,
-                            ProductionDate = new DateTime(2023, 8, 22, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6070)
+                            Price = 5.6319429234150200m,
+                            ProducerId = 5,
+                            ProductionDate = new DateTime(2024, 1, 14, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(911)
                         },
                         new
                         {
                             Id = 8,
                             Description = "Description for Product8",
                             Name = "Product8",
-                            Price = 94.99437261577600m,
-                            ProducerId = 2,
-                            ProductionDate = new DateTime(2024, 1, 14, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6072)
+                            Price = 20.238381118896900m,
+                            ProducerId = 4,
+                            ProductionDate = new DateTime(2023, 11, 21, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(913)
                         },
                         new
                         {
                             Id = 9,
                             Description = "Description for Product9",
                             Name = "Product9",
-                            Price = 79.335578509786600m,
-                            ProducerId = 3,
-                            ProductionDate = new DateTime(2023, 12, 11, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6074)
+                            Price = 56.741507856684400m,
+                            ProducerId = 4,
+                            ProductionDate = new DateTime(2023, 10, 10, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(915)
                         },
                         new
                         {
                             Id = 10,
                             Description = "Description for Product10",
                             Name = "Product10",
-                            Price = 93.201892198585300m,
-                            ProducerId = 4,
-                            ProductionDate = new DateTime(2023, 12, 10, 17, 40, 10, 840, DateTimeKind.Local).AddTicks(6078)
+                            Price = 51.933134355946400m,
+                            ProducerId = 1,
+                            ProductionDate = new DateTime(2023, 2, 10, 21, 22, 12, 596, DateTimeKind.Local).AddTicks(919)
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "f278d32d-bd62-4e09-aefa-8eb1cc451599",
+                            ConcurrencyStamp = "f278d32d-bd62-4e09-aefa-8eb1cc451599",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "c6e7905e-5da3-4c7d-bbd1-0b4297aa56f3",
+                            ConcurrencyStamp = "c6e7905e-5da3-4c7d-bbd1-0b4297aa56f3",
+                            Name = "user",
+                            NormalizedName = "USER"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3fd8734d-2fda-4812-bd37-91ac50b81cb3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ceb29e55-3d54-4bf5-8042-b0e54178691d",
+                            Email = "admin@wsei.edu.pl",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@WSEI.EDU.PL",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAENjT5GQ2hdbggT0fXFZQzSrtwfJWgcJ8WVW2WQlrQjTRm9slEj9d/0lNZ0za9MvIOA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b5beed6a-e37c-43eb-a7a5-1d1bc2de0449",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "63a16537-e634-4e1a-bf07-264187f4158e",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9249b722-6a50-4a2b-b0b2-635ff3b6a011",
+                            Email = "user@wsei.edu.pl",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@WSEI.EDU.PL",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMz8UMEI42wfjDTqZSz6O4t0xXkyd2Ggm9jU5Bl7EKHl4k9FzkWxyP/M+ZCSdklu9g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "39fe3fe3-7a47-4923-bdb2-c805e3565f50",
+                            TwoFactorEnabled = false,
+                            UserName = "user"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3fd8734d-2fda-4812-bd37-91ac50b81cb3",
+                            RoleId = "f278d32d-bd62-4e09-aefa-8eb1cc451599"
+                        },
+                        new
+                        {
+                            UserId = "63a16537-e634-4e1a-bf07-264187f4158e",
+                            RoleId = "c6e7905e-5da3-4c7d-bbd1-0b4297aa56f3"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Data.Entities.ProducerEntity", b =>
@@ -369,6 +623,57 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Producer");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data.Entities.ProducerEntity", b =>

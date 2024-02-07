@@ -12,3 +12,4 @@ D:\Programowanie\Projekt\Data\obj\Debug\net6.0\refint\Data.dll
 D:\Programowanie\Projekt\Data\obj\Debug\net6.0\Data.pdb
 D:\Programowanie\Projekt\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
 D:\Programowanie\Projekt\Data\obj\Debug\net6.0\ref\Data.dll
+D:\Programowanie\Projekt\Data\obj\Debug\net6.0\Data.sourcelink.json

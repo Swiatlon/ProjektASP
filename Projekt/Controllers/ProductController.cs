@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Projekt.Models.Producer;
 using Projekt.Models.Products;
 
 namespace Projekt.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductController : Controller
         {
         private readonly IProductService _productService;
@@ -17,6 +19,7 @@ namespace Projekt.Controllers
 
         // MAIN VIEW
         // GET: /Product
+        [AllowAnonymous]
         public IActionResult Index()
             {
                 var productList = _productService.GetAllProducts();

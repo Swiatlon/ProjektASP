@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Projekt.Models.Addresses;
 using Projekt.Models.Producer;
 
 namespace Projekt.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProducerController : Controller
     {
         private readonly IProducerService _producerService;
@@ -17,6 +19,7 @@ namespace Projekt.Controllers
 
         // MAIN VIEW
         // GET: /Producer
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var producerList = _producerService.GetAllProducers();
