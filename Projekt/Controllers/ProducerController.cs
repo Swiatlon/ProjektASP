@@ -28,6 +28,7 @@ namespace Projekt.Controllers
 
         // DETAILS
         // GET: /Producer/Details/1
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var producer = _producerService.GetProducerById(id);

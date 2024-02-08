@@ -7,33 +7,34 @@ namespace Projekt.Controllers
 {
     [Authorize(Roles = "admin")]
     public class ProductController : Controller
-        {
+    {
         private readonly IProductService _productService;
         private readonly IProducerService _producerService;
 
-        public ProductController(IProductService productService, IProducerService producerService) 
+        public ProductController(IProductService productService, IProducerService producerService)
         {
             _productService = productService;
-            _producerService = producerService; 
+            _producerService = producerService;
         }
 
         // MAIN VIEW
         // GET: /Product
         [AllowAnonymous]
         public IActionResult Index()
-            {
-                var productList = _productService.GetAllProducts();
-                return View(productList);
-            }
+        {
+            var productList = _productService.GetAllProducts();
+            return View(productList);
+        }
 
-            // DETAILS
-            // GET: /Product/Details/1
-            public IActionResult Details(int id)
-            {
+        // DETAILS
+        // GET: /Product/Details/1
+        [AllowAnonymous]
+        public IActionResult Details(int id)
+        {
             var product = _productService.GetProductById(id);
             if (product == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             var producerName = _producerService.GetProducerNameById(product.ProducerId);
@@ -42,96 +43,96 @@ namespace Projekt.Controllers
             return View(product);
         }
 
-            // ADDING
-            // GET: /Product/Create
-            [HttpGet]
-            public IActionResult Create()
-            {
+        // ADDING
+        // GET: /Product/Create
+        [HttpGet]
+        public IActionResult Create()
+        {
             var producers = _producerService.GetAllProducers();
             ViewBag.Producers = producers;
             return View("Create");
-            }
+        }
 
-            // POST: /Product/Create
-            [HttpPost]
-            public IActionResult Create(ProductModel model)
+        // POST: /Product/Create
+        [HttpPost]
+        public IActionResult Create(ProductModel model)
+        {
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    _productService.AddProduct(model);
-                    return RedirectToAction("Index");
-                }
-                else
-                {
+                _productService.AddProduct(model);
+                return RedirectToAction("Index");
+            }
+            else
+            {
                 var producers = _producerService.GetAllProducers();
                 ViewBag.Producers = producers;
                 return View("Create", model);
-                }
+            }
+        }
+
+        // EDITING
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var product = _productService.GetProductById(id);
+            var producers = _producerService.GetAllProducers();
+            ViewBag.Producers = producers;
+
+            if (product == null)
+            {
+                return NotFound();
             }
 
-            // EDITING
-            [HttpGet]
-            public IActionResult Edit(int id)
-            {
-                var product = _productService.GetProductById(id);
-                var producers = _producerService.GetAllProducers();
-                ViewBag.Producers = producers;
-
-                if (product == null)
-                {
-                    return NotFound();
-                }
-
-                return View("Edit", product);
+            return View("Edit", product);
 
         }
 
         [HttpPost]
-            public IActionResult Edit(ProductModel model)
+        public IActionResult Edit(ProductModel model)
+        {
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var producerName = _producerService.GetProducerNameById(model.ProducerId);
-                    ViewBag.ProducerName = producerName;
+                var producerName = _producerService.GetProducerNameById(model.ProducerId);
+                ViewBag.ProducerName = producerName;
 
-                    _productService.UpdateProduct(model);
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return View("Edit", model);
-                }
-            }
-
-            // DELETING
-            // GET: /Product/Delete/1
-            [HttpGet]
-            public IActionResult Delete(int id)
-            {
-                var product = _productService.GetProductById(id);
-
-                if (product == null)
-                {
-                    return NotFound();
-                }
-
-                return View(product);
-            }
-
-            // POST: /Product/DeleteConfirmed/1
-            [HttpPost, ActionName("Delete")]
-            public IActionResult DeleteConfirmed(int id)
-            {
-                var product = _productService.GetProductById(id);
-
-                if (product == null)
-                {
-                    return NotFound();
-                }
-
-                _productService.DeleteProduct(id);
-
+                _productService.UpdateProduct(model);
                 return RedirectToAction("Index");
             }
+            else
+            {
+                return View("Edit", model);
+            }
+        }
+
+        // DELETING
+        // GET: /Product/Delete/1
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.GetProductById(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
+        // POST: /Product/DeleteConfirmed/1
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var product = _productService.GetProductById(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _productService.DeleteProduct(id);
+
+            return RedirectToAction("Index");
         }
     }
+}
