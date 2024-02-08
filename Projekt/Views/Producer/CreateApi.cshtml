@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model Projekt.Models.Producer.ProducerModel
+
+<h1>Wyszukaj producenta</h1>
+
+<form id="producer-form">
+    <div class="form-group m-2">
+        <label for="filter">Filter by name:</label>
+        <input type="text" id="filter" name="filter" class="form-control" />
+    </div>
+    <button type="button" class="btn btn-primary" onclick="fetchProducers()">Fetch Producers</button>
+</form>
+
+<div id="producers-container" class="m-2"></div>
+
+@section Scripts {
+        <script>
+            function fetchProducers() {
+                var filter = document.getElementById('filter').value;
+                fetch(`/api/producers?filter=${filter}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        displayProducers(data);
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+            }
+
+            function displayProducers(producers) {
+                var container = document.getElementById('producers-container');
+                container.innerHTML = '<h2>Wyfiltrowani Producenci:</h2>';
+                var ul = document.createElement('ul');
+                producers.forEach(function(producer) {
+                    var li = document.createElement('li');
+                    li.textContent = producer.name + "| opis: " +  producer.description ;
+                    ul.appendChild(li);
+                });
+                container.appendChild(ul);
+            }
+        </script>
 }

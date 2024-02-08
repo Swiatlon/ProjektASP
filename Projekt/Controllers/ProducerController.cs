@@ -143,5 +143,19 @@ namespace Projekt.Controllers
 
             return View(address);
         }
+        public IActionResult CreateApi()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateApi(ProducerModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home"); 
+            }
+
+            return View(model);
+        }
     }
 }
